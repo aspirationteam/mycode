@@ -40,6 +40,17 @@
                         step="0.1"
                     >
                 </div>
+                <div class="input-group">
+                    <label>目标毛利率（%）</label>
+                    <input
+                        type="number"
+                        id="targetMarginRate"
+                        placeholder="请输入目标毛利率"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                    >
+                </div>
                 <button onclick="calculateMargins()" class="calculate-btn">
                     计算
                 </button>
@@ -68,6 +79,10 @@
                         <p>扣减后利润：<span id="deductedProfit"></span></p>
                         <p>毛利率：<span id="deductedMarginRate"></span></p>
                     </div>
+                </div>
+                <div class="result-card">
+                    <h3>所需销售额</h3>
+                    <p id="requiredRevenue"></p>
                 </div>
             </div>
         </div>

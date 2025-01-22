@@ -4,7 +4,7 @@ function formatNumber(num) {
 }
 
 // 验证输入值
-function validateInput(revenue, cost, refundRate) {
+function validateInput(revenue, cost, refundRate, targetMarginRate) {
   if (revenue <= 0) {
       alert('请输入有效的销售收入！');
       return false;
@@ -17,6 +17,10 @@ function validateInput(revenue, cost, refundRate) {
       alert('退款率必须在0-100之间！');
       return false;
   }
+  if (targetMarginRate < 0 || targetMarginRate > 100) {
+      alert('目标毛利率必须在0-100之间！');
+      return false;
+  }
   return true;
 }
 
@@ -26,9 +30,10 @@ function calculateMargins() {
   const revenue = parseFloat(document.getElementById('revenue').value) || 0;
   const cost = parseFloat(document.getElementById('cost').value) || 0;
   const refundRate = parseFloat(document.getElementById('refundRate').value) || 0;
+  const targetMarginRate = parseFloat(document.getElementById('targetMarginRate').value) || 0;
 
   // 验证输入
-  if (!validateInput(revenue, cost, refundRate)) {
+  if (!validateInput(revenue, cost, refundRate, targetMarginRate)) {
       return;
   }
 
@@ -45,6 +50,12 @@ function calculateMargins() {
   const originalProfit = revenue - cost;
   const deductedProfit = originalProfit - refundAmount;
   const deductedMarginRate = (deductedProfit / revenue) * 100;
+
+  // 反推销售额
+  if (targetMarginRate > 0) {
+      const requiredRevenue = (cost / (1 - targetMarginRate / 100)).toFixed(2);
+      document.getElementById('requiredRevenue').innerText = `所需销售额: ${requiredRevenue}元`;
+  }
 
   // 更新显示
   updateDisplay({
