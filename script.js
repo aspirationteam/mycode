@@ -25,7 +25,7 @@ function validateInput(revenue, cost, refundRate, targetMarginRate) {
 }
 
 // 主计算函数
-function calculateMargins() {
+const calculateMargins = () => {
   // 获取输入值
   const revenue = parseFloat(document.getElementById('revenue').value) || 0;
   const cost = parseFloat(document.getElementById('cost').value) || 0;
@@ -52,8 +52,9 @@ function calculateMargins() {
   const deductedMarginRate = (deductedProfit / revenue) * 100;
 
   // 反推销售额
+  let requiredRevenue;
   if (targetMarginRate > 0) {
-      const requiredRevenue = (cost / (1 - targetMarginRate / 100)).toFixed(2);
+      requiredRevenue = (cost / (1 - targetMarginRate / 100)).toFixed(2);
       document.getElementById('requiredRevenue').innerText = `所需销售额: ${requiredRevenue}元`;
   }
 
