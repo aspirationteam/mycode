@@ -41,49 +41,27 @@
                     >
                 </div>
                 <div class="input-group">
-                    <label>目标毛利率（%）</label>
+                    <label>毛利率（%）</label>
                     <input
                         type="number"
-                        id="targetMarginRate"
-                        placeholder="请输入目标毛利率"
+                        id="marginRate"
+                        placeholder="请输入毛利率"
                         min="0"
                         max="100"
                         step="0.1"
-                        oninput="calculateMargins()"
                     >
                 </div>
-                <button onclick="calculateMargins()" class="calculate-btn">
-                    计算
-                </button>
             </div>
 
             <!-- 计算结果 -->
             <div id="results" class="results hidden">
                 <div class="result-card">
-                    <h3>原始毛利率</h3>
-                    <p id="originalMargin"></p>
-                </div>
-                
-                <div class="result-card">
-                    <h3>方法一：调整收入法</h3>
+                    <h3>计算结果</h3>
                     <div class="result-details">
                         <p>调整后收入：<span id="adjustedRevenue"></span></p>
                         <p>调整后利润：<span id="adjustedProfit"></span></p>
                         <p>毛利率：<span id="adjustedMarginRate"></span></p>
                     </div>
-                </div>
-
-                <div class="result-card">
-                    <h3>方法二：利润扣减法</h3>
-                    <div class="result-details">
-                        <p>退款金额：<span id="refundAmount"></span></p>
-                        <p>扣减后利润：<span id="deductedProfit"></span></p>
-                        <p>毛利率：<span id="deductedMarginRate"></span></p>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <h3>所需销售额</h3>
-                    <p id="requiredRevenue"></p>
                 </div>
             </div>
         </div>
